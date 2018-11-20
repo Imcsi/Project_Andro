@@ -12,7 +12,7 @@
 
         <fragment
             android:id="@+id/fragment_place"
-            android:name="com.example.imola.project.FragmentSignUp"
+            android:name="com.example.imola.project.FragmentHome"
             android:layout_width="match_parent"
             android:layout_height="442dp"
             android:layout_marginBottom="75dp"></fragment>
@@ -28,7 +28,7 @@
             android:layout_marginBottom="3dp">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonHome"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -37,7 +37,7 @@
                 android:layout_marginStart="130dp"
                 android:layout_marginLeft="130dp"
                 android:layout_marginBottom="0dp"
-                android:background="@android:color/holo_green_dark"
+                android:background="@color/colorPrimaryDark"
                 android:clickable="true"
                 android:drawableTop="@drawable/ic_home"
                 android:lineSpacingExtra="10sp"
@@ -48,7 +48,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/buttonAdd"
 
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:layout_marginStart="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginBottom="0dp"
-                android:background="@android:color/holo_green_dark"
+                android:background="@color/colorPrimaryDark"
                 android:clickable="true"
                 android:drawableTop="@drawable/ic_add"
 
@@ -67,7 +67,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonProfile"
 
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -77,10 +77,10 @@
                 android:layout_marginStart="255dp"
                 android:layout_marginLeft="255dp"
                 android:layout_marginBottom="0dp"
-                android:background="@android:color/holo_green_dark"
+                android:background="@color/colorPrimaryDark"
                 android:clickable="true"
-                android:drawableTop="@drawable/ic_person"
 
+                android:drawableTop="@drawable/ic_person"
                 android:text="Profile"
                 android:textAllCaps="false"
                 android:textStyle="bold" />

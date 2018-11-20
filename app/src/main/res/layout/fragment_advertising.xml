@@ -35,9 +35,7 @@
             android:layout_marginTop="145dp"
             android:layout_marginBottom="201dp"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:selectAllOnFocus="false"
-            android:singleLine="true" />
+            android:hint="Description" />
 
         <TextView
             android:id="@+id/textView"
@@ -75,15 +73,15 @@
         <EditText
             android:id="@+id/editText9"
             android:layout_width="343dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
             android:layout_marginBottom="139dp"
             android:ems="10"
-            android:inputType="phone" />
+            android:hint="Phone numer" />
 
     </RelativeLayout>
 

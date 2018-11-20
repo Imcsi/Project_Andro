@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -15,7 +16,8 @@ public class FragmentHome extends Fragment {
 
 
     public FragmentHome() {
-        // Required empty public constructor
+        // Required empty public constructo
+
     }
 
 
