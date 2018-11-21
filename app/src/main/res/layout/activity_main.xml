@@ -10,13 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/fragment_place"
-            android:name="com.example.imola.project.FragmentHome"
-            android:layout_width="match_parent"
-            android:layout_height="442dp"
-            android:layout_marginBottom="75dp"></fragment>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="66dp"
@@ -85,6 +78,13 @@
                 android:textAllCaps="false"
                 android:textStyle="bold" />
 
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragment_place"
+            android:layout_width="match_parent"
+            android:layout_height="439dp">
 
         </RelativeLayout>
 
