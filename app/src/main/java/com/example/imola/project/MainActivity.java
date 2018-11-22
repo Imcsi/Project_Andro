@@ -18,8 +18,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG =" " ;
     private Fragment fragment;
-    private ArrayList<String> mNames= new ArrayList<>();
-    private ArrayList<String> mImageUrls= new ArrayList<>();
+
     //private ArrayList<String> mNames= new ArrayList<>();
     //private ArrayList<String> mImageUrls= new ArrayList<>();
 
@@ -85,32 +84,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_place, fragment, fragment.getClass().getSimpleName());
         ft.commit();
-    }
-
-
-    private void initImageBitmaps(){
-        Log.d(TAG, "initImageBitmaps: preparing bitmaps");
-
-        mImageUrls.add("https://c1.staticflickr.com/5/4636/25316407448_de5fbf183d_o.jpg");
-        mNames.add("Havasu Falls");
-
-        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        mNames.add("Trondheim");
-
-        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        mNames.add("Portugal");
-
-        initRecyclerView();
-    }
-
-
-
-    private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: init recyclerview.");
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter= new RecyclerViewAdapter(this,mNames, mImageUrls);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentAdvertising">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/consraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -14,83 +16,83 @@
             android:id="@+id/imageView"
             android:layout_width="376dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="66dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="33dp"
             android:layout_marginTop="32dp"
-            android:text="Title" />
+            android:text="Title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="55dp"
             android:layout_height="57dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
             android:layout_marginBottom="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/imageView2"
-            android:layout_alignParentBottom="true"
             android:layout_marginBottom="12dp"
-            android:text="Creator" />
+            android:text="Creator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView2" />
 
         <TextView
             android:id="@+id/AdvertDescription"
             android:layout_width="333dp"
             android:layout_height="145dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="34dp"
             android:layout_marginLeft="34dp"
             android:layout_marginTop="163dp"
-            android:text="Description" />
+            android:text="Description"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/AdvertPhoneNumber"
             android:layout_width="200dp"
             android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="68dp"
             android:layout_marginLeft="68dp"
             android:layout_marginTop="346dp"
-            android:text="Phone Number" />
+            android:text="Phone Number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/AdvertLocation"
             android:layout_width="200dp"
             android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="67dp"
             android:layout_marginLeft="67dp"
             android:layout_marginTop="405dp"
-            android:text="Location" />
+            android:text="Location"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
