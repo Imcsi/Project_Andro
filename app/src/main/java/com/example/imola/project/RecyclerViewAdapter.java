@@ -2,11 +2,13 @@ package com.example.imola.project;
 
 import android.content.Context;
 import android.media.Image;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,67 +20,50 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG= "RecyclerViewAdapter";
+    private ArrayList<Advertiser>advertisers;
+    private Advertiser advertiser;
 
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImages = new ArrayList<>();
-    private Context mContext;
+    public RecyclerViewAdapter(ArrayList<Advertiser> advertisers) {
+        this.advertisers = advertisers;
 
-
-
-    public RecyclerViewAdapter( Context context, ArrayList<String> imageNames, ArrayList<String> images) {
-        mImageNames = imageNames;
-        mImages = images;
-        mContext = context;
     }
 
+    @NonNull
 
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
-        ViewHolder holder= new ViewHolder(view);
-        return holder;
-
+    @Override
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_listitem,viewGroup,false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG,"onBindViewHolder: called." );
-        Glide.with(mContext)
-                .asBitmap()
-                .load(mImages.get(position));
+   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        advertiser = advertisers.get(i);
+        viewHolder.m_aTitle.setText(advertiser.getaTitle());
+        viewHolder.m_details.setText(advertiser.getDetails());
+        viewHolder.m_checkNumber.setText(advertiser.getCheckNumber().toString());
+      // viewHolder.m_aImage.(advertiser.getaImage());
 
 
-        holder.imageName.setText(mImageNames.get(position));
-
-        holder.parentLayout.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                Log.d(TAG, "onClick: cliked on: "+ mImageNames.get(position));
-
-                Toast.makeText(mContext,mImageNames.get(position), Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
     @Override
     public int getItemCount() {
-        return mImageNames.size();
+        return advertisers.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView m_aTitle,m_details,m_checkNumber;
+        ImageView m_aImage,m_profileImage;
 
-        private Image image;
-        TextView imageName;
-        RelativeLayout parentLayout;
-
-
-        public ViewHolder (View itemView){
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageName =itemView.findViewById(R.id.UserImage);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
-
+             m_aTitle= itemView.findViewById(R.id.AdvertTitle);
+             m_details= itemView.findViewById(R.id.SomeDetail);
+             m_checkNumber=itemView.findViewById(R.id.checkNumber);
+            m_aImage=itemView.findViewById(R.id.imageAdver);
+            m_profileImage=itemView.findViewById(R.id.imageUser);
         }
-
-
-
     }
 }

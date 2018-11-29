@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fragment_place"
+        android:layout_width="376dp"
+        android:layout_height="439dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="3dp">
+    </android.support.constraint.ConstraintLayout>
 
-            <Button
-                android:id="@+id/buttonHome"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="130dp"
-                android:layout_marginLeft="130dp"
-                android:layout_marginBottom="0dp"
-                android:background="@color/colorPrimaryDark"
-                android:clickable="true"
-                android:drawableTop="@drawable/ic_home"
-                android:lineSpacingExtra="10sp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="388dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:background="@color/colorPrimaryDark">
 
-                android:text="Home"
-                android:textAllCaps="false"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
+        <Button
+            android:id="@+id/buttonHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-            <Button
-                android:id="@+id/buttonAdd"
+            android:background="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_home"
+            android:lineSpacingExtra="10sp"
+            android:text="Home"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonProfile"
+            app:layout_constraintStart_toEndOf="@+id/buttonAdd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginLeft="6dp"
-                android:layout_marginBottom="0dp"
-                android:background="@color/colorPrimaryDark"
-                android:clickable="true"
-                android:drawableTop="@drawable/ic_add"
+        <Button
+            android:id="@+id/buttonAdd"
 
-                android:text="Add"
-                android:textAllCaps="false"
-                android:textStyle="bold" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-            <Button
-                android:id="@+id/buttonProfile"
+            android:background="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_add"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonHome"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="255dp"
-                android:layout_marginLeft="255dp"
-                android:layout_marginBottom="0dp"
-                android:background="@color/colorPrimaryDark"
-                android:clickable="true"
+        <Button
+            android:id="@+id/buttonProfile"
 
-                android:drawableTop="@drawable/ic_person"
-                android:text="Profile"
-                android:textAllCaps="false"
-                android:textStyle="bold" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:drawableTop="@drawable/ic_person"
+            android:text="Profile"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonHome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
 
 
-        </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
-        <RelativeLayout
-            android:id="@+id/fragment_place"
-            android:layout_width="match_parent"
-            android:layout_height="439dp">
-
-        </RelativeLayout>
-
-    </RelativeLayout>
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>
