@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                fragment=getSupportFragmentManager().findFragmentByTag("EditProfileFragment");
+                fragment=getSupportFragmentManager().findFragmentByTag("NewAdvertFragment");
                 if (fragment == null) {
-                    fragment = new EditProfileFragment();
+                    fragment = new NewAdvertFragment();
                 }
                 loadFragment(fragment);
             }
@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
 
@@ -86,11 +84,5 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    public void editUserProfile(View view) {
-        findViewById(R.id.userFirstName).setEnabled(true);
-         findViewById(R.id.userLastNameP).setEnabled(true);
-         findViewById(R.id.phoneNumber).setEnabled(true);
-        findViewById(R.id.UserAdress).setEnabled(true);
-        findViewById(R.id.SaveProfil).setVisibility(View.VISIBLE);
-    }
+
 }
