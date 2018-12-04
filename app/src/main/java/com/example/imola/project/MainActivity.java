@@ -1,19 +1,12 @@
 package com.example.imola.project;
 
 
-import android.content.Intent;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -86,11 +79,5 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    public void editUserProfile(View view) {
-        findViewById(R.id.userFirstName).setEnabled(true);
-         findViewById(R.id.userLastNameP).setEnabled(true);
-         findViewById(R.id.phoneNumber).setEnabled(true);
-        findViewById(R.id.UserAdress).setEnabled(true);
-        findViewById(R.id.SaveProfil).setVisibility(View.VISIBLE);
-    }
+
 }

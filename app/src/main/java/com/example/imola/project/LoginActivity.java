@@ -65,8 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mPhoneNumberField;
     private EditText mVerificationField;
 
-    private Button mStartButton;
-    private Button mVerifyButton;
     private Button mResendButton;
     private Button mSignOutButton;
 
@@ -103,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-
+/*
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +109,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 findViewById(R.id.persFirstName).setVisibility(View.VISIBLE);
                 findViewById(R.id.buttonSignUp).setVisibility(View.VISIBLE);
                 mVerificationField.setVisibility(View.VISIBLE);
-                mVerifyButton.setVisibility(View.VISIBLE);
-                mStartButton.setVisibility(View.VISIBLE);
+               // mVerifyButton.setVisibility(View.VISIBLE);
+               // mStartButton.setVisibility(View.VISIBLE);
 
             }
         });
@@ -299,7 +297,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth.signOut();
         updateUI(STATE_INITIALIZED);
     }*/
-
+/*
     private void updateUI(int uiState) {
         updateUI(uiState, mAuth.getCurrentUser(), null);
     }
@@ -348,7 +346,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                        // mVerificationField.setText(R.string.instant_validation);
                     }*/
                 //}
-
+/*
                 break;
             case STATE_SIGNIN_FAILED:
                 // No-op, handled by sign-in check
@@ -410,11 +408,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }*/
 
                // verifyPhoneNumberWithCode(mVerificationId, code);
-                break;
+                //break;
 
-        }
+
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
 
 

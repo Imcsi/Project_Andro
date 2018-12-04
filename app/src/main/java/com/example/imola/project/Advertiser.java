@@ -2,6 +2,8 @@ package com.example.imola.project;
 
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 public class Advertiser {
  String aTitle,details;
  Integer checkNumber;
@@ -62,4 +64,6 @@ public class Advertiser {
     public Integer getCheckNumber() {
         return checkNumber;
     }
+
+
 }

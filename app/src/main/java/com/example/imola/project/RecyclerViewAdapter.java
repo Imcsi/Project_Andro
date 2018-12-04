@@ -56,6 +56,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView m_aTitle,m_details,m_checkNumber;
         ImageView m_aImage,m_profileImage;
+        private RecyclerViewAdapter context= RecyclerViewAdapter.this;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,5 +68,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             m_aImage=itemView.findViewById(R.id.imageAdver);
             m_profileImage=itemView.findViewById(R.id.imageUser);
         }
+
+       /* loadImageByResourceId();
+
+
+        private void loadImageByResourceId() {
+            int resourceId=R.mipmap.ic_launcher;
+
+            Glide
+                    .with(context)
+                    .load(resourceId)
+                    .into(m_aImage);
+        }
+        */
     }
+
+
+
+
 }
