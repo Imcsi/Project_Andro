@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                fragment=getSupportFragmentManager().findFragmentByTag("EditProfileFragment");
+                fragment=getSupportFragmentManager().findFragmentByTag("NewAdvertFragment");
                 if (fragment == null) {
-                    fragment = new EditProfileFragment();
+                    fragment = new NewAdvertFragment();
                 }
                 loadFragment(fragment);
             }
@@ -64,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(fragment);
             }
         });
-
-
 
     }
 
