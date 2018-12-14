@@ -2,14 +2,20 @@ package com.example.imola.project;
 
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +28,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity  {
 
 
+    private static final int RC_SIGN_IN =0;
     private Fragment fragment;
 
     private static final String TAG = "PhoneAuthActivity";
@@ -70,6 +79,8 @@ public class LoginActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
         }
@@ -90,6 +101,18 @@ public class LoginActivity extends AppCompatActivity  {
         mSignedInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String code = mVerificationField.getText().toString();
+                if (TextUtils.isEmpty(code)) {
+                    mVerificationField.setError("Cannot be empty.");
+                    return;
+                }
+
+                verifyPhoneNumberWithCode(mVerificationId, code);
+
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
 
             }
         });
@@ -97,22 +120,28 @@ public class LoginActivity extends AppCompatActivity  {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!validatePhoneNumber()) {
+                    return;
+                }
+
+                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+
                 mPersName.setVisibility(View.INVISIBLE);
                 mLastName.setVisibility(View.INVISIBLE);
-                mPhoneNumberField.setVisibility(View.INVISIBLE);
+                //mPhoneNumberField.setVisibility(View.INVISIBLE);
                 btnSignUp.setVisibility(View.INVISIBLE);
                 mVerificationField.setVisibility(View.VISIBLE);
-                mStartButton.setVisibility(View.VISIBLE);
-                mSignedInButton.setVisibility(View.INVISIBLE);
-
+                //mStartButton.setVisibility(View.VISIBLE);
+                mSignedInButton.setVisibility(View.VISIBLE);
             }
+
         });
     mStartButton.setOnClickListener(new View.OnClickListener() {
     @Override
+
         public void onClick(View v) {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+
         }
     });
 
@@ -123,12 +152,18 @@ public class LoginActivity extends AppCompatActivity  {
                 mLastName.setVisibility(View.VISIBLE);
                 btnSignUp.setVisibility(View.VISIBLE);
                 text.setVisibility(View.INVISIBLE);
-               // mVerificationField.setVisibility(View.VISIBLE);
-               // mVerifyButton.setVisibility(View.VISIBLE);
-                //mStartButton.setVisibility(View.VISIBLE);
+                mVerificationField.setVisibility(View.INVISIBLE);
+                mStartButton.setVisibility(View.INVISIBLE);
+                mSignedInButton.setVisibility(View.INVISIBLE);
 
             }
         });
+
+        //SIGN IN
+
+
+
+
 
 
         ///login
@@ -148,14 +183,11 @@ public class LoginActivity extends AppCompatActivity  {
 
 
             public void onVerificationFailed(FirebaseException e) {
-                // This callback is invoked in an invalid request for verification is made,
-                // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e);
                 mVerificationInProgress = false;
 
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     mPhoneNumberField.setError("Invalid phone number.");
-
                 }
 
             }
@@ -172,7 +204,6 @@ public class LoginActivity extends AppCompatActivity  {
                 mVerificationId = verificationId;
                 mResendToken = token;
 
-
             }
         };
 
@@ -180,12 +211,14 @@ public class LoginActivity extends AppCompatActivity  {
 // [END phone_auth_callbacks]
 
 
+
+
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+       // FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (mVerificationInProgress && validatePhoneNumber()) {
             startPhoneNumberVerification(mPhoneNumberField.getText().toString());
@@ -227,20 +260,7 @@ public class LoginActivity extends AppCompatActivity  {
         signInWithPhoneAuthCredential(credential);
     }
 
-    // [START resend_verification]
-    private void resendVerificationCode(String phoneNumber,
-                                        PhoneAuthProvider.ForceResendingToken token) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks,         // OnVerificationStateChangedCallbacks
-                token);             // ForceResendingToken from callbacks
-    }
-// [END resend_verification]
 
-    // [START sign_in_with_phone]
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -252,8 +272,13 @@ public class LoginActivity extends AppCompatActivity  {
 
                             FirebaseUser user = task.getResult().getUser();
 
+/*
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();*/
+
                         } else {
-                            // Sign in failed, display a message and update the UI
+                            // Sign in failed, display a message
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
 
                         }
@@ -270,25 +295,15 @@ public class LoginActivity extends AppCompatActivity  {
 
     private boolean validatePhoneNumber() {
         String phoneNumber = mPhoneNumberField.getText().toString();
-       /* if (TextUtils.isEmpty(phoneNumber)) {
+        if (TextUtils.isEmpty(phoneNumber)) {
             mPhoneNumberField.setError("Invalid phone number.");
             return false;
         }
-*/
+
         return true;
     }
 
-    private void enableViews(View... views) {
-        for (View v : views) {
-            v.setEnabled(true);
-        }
-    }
 
-    private void disableViews(View... views) {
-        for (View v : views) {
-            v.setEnabled(false);
-        }
-    }
 
 
 

@@ -26,14 +26,14 @@
         android:id="@+id/buttonSignIn"
         android:layout_width="215dp"
         android:layout_height="37dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="44dp"
         android:background="@color/colorPrimaryDark"
         android:text="Sign In"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toTopOf="@+id/buttonSignUp" />
 
     <Button
         android:id="@+id/buttonSignUp"
@@ -41,9 +41,9 @@
         android:layout_height="38dp"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="92dp"
 
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/colorPrimaryDark"
         android:text="Sign Up"
@@ -60,11 +60,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
 
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        android:text="Last Name"
         android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,13 +74,13 @@
         android:id="@+id/persFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="First Name"
+        android:hint="First Name"
 
+        android:inputType="textPersonName"
         android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,12 +92,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
+        android:hint="Phone Number"
         android:inputType="phone"
-        android:text="Phone Number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/persName" />
+        app:layout_constraintTop_toBottomOf="@+id/persFirstName" />
 
     <TextView
         android:id="@+id/TextSignUp"
@@ -105,6 +106,7 @@
         android:layout_height="24dp"
         android:layout_marginStart="124dp"
         android:layout_marginLeft="124dp"
+        android:layout_marginTop="8dp"
         android:text="Do you have an account? If not Sign Up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
@@ -116,50 +118,31 @@
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
 
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Verification Code"
         android:inputType="textPersonName"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStartVerification"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/buttonVerifyPhoneNumber"
-        android:layout_width="210dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-
-        android:layout_marginRight="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Verify Phone"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartVerification" />
 
     <Button
         android:id="@+id/buttonStartVerification"
         android:layout_width="224dp"
         android:layout_height="42dp"
+
+        android:layout_marginTop="8dp"
+
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="188dp"
         android:background="@color/colorPrimaryDark"
-
         android:text="Verification"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fieldVerification" />
+        app:layout_constraintStart_toStartOf="@+id/fieldVerification"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
 

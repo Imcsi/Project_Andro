@@ -23,14 +23,6 @@
           }
         },
         {
-          "client_id": "660779735307-59ia1c6675pfbt0fmi0hpfaim6uruqi8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.imola.project",
-            "certificate_hash": "2bf8556c724227c1127a5faed239ebb5d034eaca"
-          }
-        },
-        {
           "client_id": "660779735307-n550f04lncpukehu6e9konablj5io7q4.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -52,6 +44,37 @@
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660779735307:android:c1f0f09aa42eba16",
+        "android_client_info": {
+          "package_name": "com.google.firebase.example.fireeats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660779735307-n550f04lncpukehu6e9konablj5io7q4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvlFYWwtesHuY3-E-Oxwpxf6QQsuDf4BQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
