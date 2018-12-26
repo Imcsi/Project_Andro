@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
+
     @NonNull
 
     @Override
@@ -41,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         advertiser = advertisers.get(i);
         viewHolder.m_aTitle.setText(advertiser.getaTitle());
         viewHolder.m_details.setText(advertiser.getDetails());
-        viewHolder.m_checkNumber.setText(advertiser.getCheckNumber().toString());
+        //viewHolder.m_checkNumber.setText(advertiser.getCheckNumber().toString());
       // viewHolder.m_aImage.(advertiser.getaImage());
 
 

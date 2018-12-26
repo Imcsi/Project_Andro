@@ -34,7 +34,7 @@ public class NewAdvertFragment extends Fragment {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int RESULT_OK = -1;
-
+    private  String imageStorageUrl;
     private EditText mTitle;
     private EditText mShort_Description;
     private EditText mLong_Description;
@@ -150,7 +150,7 @@ public class NewAdvertFragment extends Fragment {
     private void uploadAdvert() {
 
 
-
+        String imageStorageName;
         String advert_Title = mTitle.getText().toString();
         String advert_Short_Description = mShort_Description.getText().toString();
         String advert_Long_Description = mLong_Description.getText().toString();
@@ -160,7 +160,8 @@ public class NewAdvertFragment extends Fragment {
         if (!TextUtils.isEmpty(advert_Title) && !TextUtils.isEmpty(advert_Short_Description) && !TextUtils.isEmpty(advert_Phone_Number) &&
                 !TextUtils.isEmpty(advert_Long_Description) && !TextUtils.isEmpty(advert_Location_Text) && mImageUri != null) {
 
-            final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+            imageStorageName=System.currentTimeMillis() + "." + getFileExtension(mImageUri);
+            final StorageReference fileReference = mStorageRef.child(imageStorageName);
             fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -175,8 +176,9 @@ public class NewAdvertFragment extends Fragment {
                             }, 500);
 
                             Toast.makeText(getActivity(), "Upload Successful Image", Toast.LENGTH_LONG).show();
+
                             //Upload upload2 = new Upload();
-                            // String uploadId = mDatabaseRef.push().getKey();
+                             //String uploadId = mDatabaseRef.push().getKey();
                             //mDatabaseRef.child().setValue(upload2);
 
                         }
@@ -184,7 +186,7 @@ public class NewAdvertFragment extends Fragment {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //Toast.makeText(NewAdvertFragment.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Failed Image", Toast.LENGTH_LONG).show();;
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -198,9 +200,10 @@ public class NewAdvertFragment extends Fragment {
 
 
 
+
             String mPhone_Number = mDatabaseRef.push().getKey();
 
-            upload = new Upload(fileReference.toString(), advert_Title, advert_Short_Description, advert_Long_Description, advert_Phone_Number, advert_Location_Text);
+            upload = new Upload( imageStorageName, advert_Title, advert_Short_Description, advert_Long_Description, mPhone_Number, advert_Location_Text);
             mDatabaseRef.child("adverts" + ++advertNumber).setValue(upload);
 
 
