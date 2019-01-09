@@ -27,12 +27,19 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity  {
+
+    FirebaseUser currentUser=FirebaseAuth.getInstance().getCurrentUser();
+
 
 
     private static final int RC_SIGN_IN =0;
@@ -74,6 +81,7 @@ public class LoginActivity extends AppCompatActivity  {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -108,7 +116,7 @@ public class LoginActivity extends AppCompatActivity  {
                 }
 
                 verifyPhoneNumberWithCode(mVerificationId, code);
-
+                savingData();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -218,7 +226,7 @@ public class LoginActivity extends AppCompatActivity  {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-       // FirebaseUser currentUser = mAuth.getCurrentUser();
+         currentUser = mAuth.getCurrentUser();
 
         if (mVerificationInProgress && validatePhoneNumber()) {
             startPhoneNumberVerification(mPhoneNumberField.getText().toString());
@@ -269,22 +277,28 @@ public class LoginActivity extends AppCompatActivity  {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-
-                            FirebaseUser user = task.getResult().getUser();
+                            if (currentUser.getPhoneNumber().toString() != null) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Login Successfull" + currentUser.getPhoneNumber().toString(), Toast.LENGTH_LONG).show();
+                                FirebaseUser user = task.getResult().getUser();
+                            }
 
 /*
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();*/
 
-                        } else {
-                            // Sign in failed, display a message
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            } else {
+                                // Sign in failed, display a message
+                                Log.w(TAG, "signInWithCredential:failure", task.getException());
 
+                            }
                         }
-                    }
-                });
+
+                    });
+
     }
+
 // [END sign_in_with_phone]
 
     /*private void signOut() {
@@ -301,6 +315,25 @@ public class LoginActivity extends AppCompatActivity  {
         }
 
         return true;
+    }
+
+    private void savingData(){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //DatabaseReference ref = database.getReference("users");
+
+        String firstNameText = mPersName.getText().toString();
+        String lastNameText = mLastName.getText().toString();
+        String phoneNumberText = mPhoneNumberField.getText().toString();
+
+
+        DatabaseReference usersRef = database.getReference("user").child(phoneNumberText);
+
+        User user = new User(firstNameText, lastNameText,phoneNumberText);
+
+        usersRef.setValue(user);
+
+
     }
 
 
