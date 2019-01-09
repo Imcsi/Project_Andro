@@ -125,15 +125,20 @@ public class EditProfileFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     User user =dataSnapshot.getValue(User.class);
-                    System.out.println(user+"AAAAAAAA");
                     phoneNumber.setText(user.getUphoneNumber());
                     Log.d("user", user.getUphoneNumber().toString());
                     lastName.setText(user.getUlastName());
                     Log.d("user", user.getUlastName().toString());
                     firstName.setText(user.getUfirstName());
                     Log.d("user", user.getUfirstName());
-                    //email.setText(user.getUemail());
-                   // adress.setText(user.getUadress());
+                    if (user.getUemail() != null){
+                        email.setText(user.getUemail());
+                    }
+                    if(user.getUadress()!=null)
+                    {
+                        adress.setText(user.getUadress());
+                    }
+                    
                 }
 
                 @Override
