@@ -9,9 +9,29 @@ public class Upload {
     private String Long_Description;
     private String Phone_Number;
     private String Location_Text;
+    private String Profile_Picture;
+
+
 
     public Upload(){
 
+    }
+
+    public Upload(String imageUrl, String title, String short_Description) {
+        ImageUrl = imageUrl;
+        Title = title;
+        Short_Description = short_Description;
+    }
+
+    public Upload(String name, String imageUrl, String title, String short_Description, String long_Description, String phone_Number, String location_Text, String profile_Picture) {
+        Name = name;
+        ImageUrl = imageUrl;
+        Title = title;
+        Short_Description = short_Description;
+        Long_Description = long_Description;
+        Phone_Number = phone_Number;
+        Location_Text = location_Text;
+        Profile_Picture = profile_Picture;
     }
 
     public Upload(String imageUrl, String mTitle, String mShort_Description, String mLong_Description, String mPhone_Number, String mLocation_Text) {
@@ -21,6 +41,13 @@ public class Upload {
         this.Long_Description = mLong_Description;
         this.Phone_Number = mPhone_Number;
         this.Location_Text = mLocation_Text;
+    }
+    public String getProfile_Picture() {
+        return Profile_Picture;
+    }
+
+    public void setProfile_Picture(String profile_Picture) {
+        Profile_Picture = profile_Picture;
     }
 
     public String getmName() {

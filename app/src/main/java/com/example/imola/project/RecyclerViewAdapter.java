@@ -41,12 +41,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         advertiser = advertisers.get(i);
         viewHolder.m_aTitle.setText(advertiser.getaTitle());
         viewHolder.m_details.setText(advertiser.getDetails());
         //viewHolder.m_checkNumber.setText(advertiser.getCheckNumber().toString());
-      // viewHolder.m_aImage.(advertiser.getaImage());
+        // viewHolder.m_aImage.(advertiser.getaImage());
 
 
     }
@@ -66,25 +66,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-             m_aTitle= itemView.findViewById(R.id.AdvertTitle);
-             m_details= itemView.findViewById(R.id.SomeDetail);
-             m_checkNumber=itemView.findViewById(R.id.checkNumber);
+            m_aTitle= itemView.findViewById(R.id.AdvertTitle);
+            m_details= itemView.findViewById(R.id.SomeDetail);
+            m_checkNumber=itemView.findViewById(R.id.checkNumber);
             m_aImage=itemView.findViewById(R.id.imageAdver);
             m_profileImage=itemView.findViewById(R.id.imageUser);
         }
 
        /* loadImageByResourceId();
-
-
         private void loadImageByResourceId() {
             int resourceId=R.mipmap.ic_launcher;
-
             Glide
                     .with(context)
                     .load(resourceId)
                     .into(m_aImage);
-        }
-        */
+        }*/
+
     }
 
 

@@ -53,7 +53,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                 // Handle any errors
             }
         });*/
-        Picasso.with( itemView.getContext() ).load( ImageUrl ).into( (Target) m_aImage );
+//        Picasso.with( itemView.getContext() ).load( ImageUrl ).into( (Target) m_aImage );
 
 
 

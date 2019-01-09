@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -45,6 +47,7 @@ public class NewAdvertFragment extends Fragment {
     private Button mbuttonSaveAdvert;
     private ImageView mImageView;
     private Upload upload;
+    private Uri downloadUri ;
 
     private ProgressBar mProgressBar;  //??kell?
 
@@ -160,7 +163,7 @@ public class NewAdvertFragment extends Fragment {
         if (!TextUtils.isEmpty(advert_Title) && !TextUtils.isEmpty(advert_Short_Description) && !TextUtils.isEmpty(advert_Phone_Number) &&
                 !TextUtils.isEmpty(advert_Long_Description) && !TextUtils.isEmpty(advert_Location_Text) && mImageUri != null) {
 
-            imageStorageName=System.currentTimeMillis() + "." + getFileExtension(mImageUri);
+            imageStorageName=System.currentTimeMillis() + "." + "jpg";
             final StorageReference fileReference = mStorageRef.child(imageStorageName);
             fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -198,13 +201,22 @@ public class NewAdvertFragment extends Fragment {
                         }
                     });
 
+            fileReference.getDownloadUrl().addOnSuccessListener( new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    //progressDialog.dismiss();
+                    //Toast.makeText(getContext(), "Uploaded " + filePath, Toast.LENGTH_SHORT).show();
+                    //Log.d(TAG, "onSuccess: uri= "+ uri.toString());
+                    downloadUri = uri;
+
+                }
+            } );
 
 
 
-            String mPhone_Number = mDatabaseRef.push().getKey();
-
-            upload = new Upload( imageStorageName, advert_Title, advert_Short_Description, advert_Long_Description, mPhone_Number, advert_Location_Text);
-            mDatabaseRef.child("adverts" + ++advertNumber).setValue(upload);
+            upload = new Upload( imageStorageUrl, advert_Title, advert_Short_Description, advert_Long_Description, advert_Phone_Number, advert_Location_Text);
+            final String key =  mDatabaseRef.push().getKey();
+            mDatabaseRef.child(key).setValue(upload);
 
 
 
