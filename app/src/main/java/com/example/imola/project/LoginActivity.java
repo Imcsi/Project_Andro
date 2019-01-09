@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity  {
                 }
 
                 verifyPhoneNumberWithCode(mVerificationId, code);
-                savingData();
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity  {
                 }
 
                 startPhoneNumberVerification(mPhoneNumberField.getText().toString());
-
+                savingData();
                 mPersName.setVisibility(View.INVISIBLE);
                 mLastName.setVisibility(View.INVISIBLE);
                 //mPhoneNumberField.setVisibility(View.INVISIBLE);

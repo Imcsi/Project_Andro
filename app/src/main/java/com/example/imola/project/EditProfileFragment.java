@@ -68,8 +68,25 @@ public class EditProfileFragment extends Fragment {
         });
 
 
-        //Button mEditProfile=view.findViewById(R.id.buttonEditProfile) ;
-       // mSaveProfil=  view.findViewById(R.id.SaveProfil);
+
+
+
+        view.findViewById(R.id.buttonEditProfile).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                firstName.setEnabled(true);
+                lastName.setEnabled(true);
+                phoneNumber.setEnabled(true);
+                adress.setEnabled(true);
+                email.setEnabled(true);
+                //mSaveProfil.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
+        // mSaveProfil=  view.findViewById(R.id.SaveProfil);
         //FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
 
@@ -94,7 +111,7 @@ public class EditProfileFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        DatabaseReference databaseref = database.getReference("uploads");
+        DatabaseReference databaseref = database.getReference("user");
 
         if(currentUser == null)
         {
@@ -106,16 +123,17 @@ public class EditProfileFragment extends Fragment {
 
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                     User user =dataSnapshot.getValue(User.class);
-                    System.out.println(user+"AAAAAAAA");/*
+                    System.out.println(user+"AAAAAAAA");
                     phoneNumber.setText(user.getUphoneNumber());
                     Log.d("user", user.getUphoneNumber().toString());
                     lastName.setText(user.getUlastName());
                     Log.d("user", user.getUlastName().toString());
                     firstName.setText(user.getUfirstName());
                     Log.d("user", user.getUfirstName());
-                    email.setText(user.getUemail());
-                    adress.setText(user.getUadress());*/
+                    //email.setText(user.getUemail());
+                   // adress.setText(user.getUadress());
                 }
 
                 @Override
@@ -132,22 +150,23 @@ public class EditProfileFragment extends Fragment {
 
 
     private void update(){
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseref = database.getReference("uploads");
-
         String firName = firstName.getText().toString();
         String lstName= lastName.getText().toString();
         String eml=email.getText().toString();
         String phnNumber = phoneNumber.getText().toString();
         String adr = adress.getText().toString();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseref = database.getReference("user").child(phnNumber);
+
+
 
         if (currentUser == null) {
             Toast.makeText(getContext(), "Kerem jelentkezzen be", Toast.LENGTH_SHORT).show();
         } else {
-            Map<String, Object> userDataUpdates = new HashMap<>();
-            userDataUpdates.put(currentUser.getPhoneNumber(), new User(firName, lstName, eml, phnNumber, adr));
 
-            databaseref.updateChildren(userDataUpdates);
+             User user=new User(firName, lstName, eml, phnNumber, adr);
+
+            databaseref.setValue(user);
         }
 
 

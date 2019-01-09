@@ -54,6 +54,7 @@ public class NewAdvertFragment extends Fragment {
     private Uri mImageUri;
 
     private Integer advertNumber = 0;
+    FirebaseUser currentUser=FirebaseAuth.getInstance().getCurrentUser();
 
 
     private StorageReference mStorageRef;
@@ -214,7 +215,7 @@ public class NewAdvertFragment extends Fragment {
 
 
 
-            upload = new Upload( imageStorageUrl, advert_Title, advert_Short_Description, advert_Long_Description, advert_Phone_Number, advert_Location_Text);
+            upload = new Upload( imageStorageUrl, advert_Title, advert_Short_Description, advert_Long_Description, currentUser.getPhoneNumber().toString() , advert_Location_Text);
             final String key =  mDatabaseRef.push().getKey();
             mDatabaseRef.child(key).setValue(upload);
 
