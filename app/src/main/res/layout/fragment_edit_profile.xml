@@ -10,19 +10,14 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/chooseProfImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Image"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:layout_constraintHorizontal_bias="0.857"
+        android:id="@+id/signOutButton"
+        android:layout_width="61dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:drawable/ic_lock_power_off"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,11 +25,11 @@
         android:id="@+id/imageView6"
         android:layout_width="90dp"
         android:layout_height="86dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_person"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/signOutButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -46,7 +41,7 @@
         android:hint="First Name"
         android:contextClickable="false"
         android:cursorVisible="false"
-        android:enabled="false"
+        android:enabled="true"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -60,7 +55,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
         android:ems="10"
-        android:enabled="false"
+        android:enabled="true"
         android:hint="Last Name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:enabled="false"
+        android:enabled="true"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +84,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Phone Number"
-        android:enabled="false"
+        android:enabled="true"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userEmail" />
@@ -103,7 +98,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Adress"
-        android:enabled="false"
+        android:enabled="true"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
