@@ -30,12 +30,13 @@ public class SplashActivity extends AppCompatActivity {
         }, 1000);
 
         imageView1 = findViewById(R.id.imageStart);
-        loadImageByResourceId();
+       // loadImageByResourceId();
 
 
 
 
     }
+    /*
     private void loadImageByResourceId() {
         int resourceId=R.mipmap.ic_launcher;
 
@@ -43,6 +44,6 @@ public class SplashActivity extends AppCompatActivity {
                 .with(context)
                 .load(resourceId)
                 .into(imageView1);
-    }
+    }*/
 
 }
