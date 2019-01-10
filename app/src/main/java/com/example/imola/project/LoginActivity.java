@@ -2,11 +2,9 @@ package com.example.imola.project;
 
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -30,10 +28,6 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity  {
@@ -103,7 +97,7 @@ public class LoginActivity extends AppCompatActivity  {
         mStartButton=findViewById(R.id.buttonStartVerification);
         mSignedInButton = (Button) findViewById(R.id.buttonSignIn);
         btnSignUp = (Button) findViewById(R.id.buttonSignUp);
-        mPhoneNumberField=findViewById(R.id.phoneNumber);
+        mPhoneNumberField=findViewById(R.id.checkNumber);
 
 
         mSignedInButton.setOnClickListener(new View.OnClickListener() {

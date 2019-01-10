@@ -20,9 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class EditProfileFragment extends Fragment {
 
     private EditText firstName;
@@ -100,7 +97,7 @@ public class EditProfileFragment extends Fragment {
 
        firstName= view.findViewById(R.id.userFirstName);
        lastName= view.findViewById(R.id.userLastNameP);
-       phoneNumber= view.findViewById(R.id.phoneNumber);
+       phoneNumber= view.findViewById(R.id.checkNumber);
        adress=view.findViewById(R.id.UserAdress);
        email=view.findViewById(R.id.userEmail);
 //       mSaveProfil.setVisibility(View.VISIBLE);

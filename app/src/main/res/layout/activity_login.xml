@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/checkNumber" />
 
     <EditText
         android:id="@+id/persName"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/checkNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -141,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fieldVerification"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/checkNumber"
         app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
